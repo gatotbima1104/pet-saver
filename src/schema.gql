@@ -1,0 +1,58 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Owner {
+  id: String!
+  name: String!
+  gender: GenderEnum!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum GenderEnum {
+  MALE
+  FEMALE
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Pet {
+  id: String!
+  name: String!
+  type: String
+  gender: String
+}
+
+type Query {
+  pets: [Pet!]!
+  pet(id: String!): Pet
+  owners: [Owner!]!
+  owner(id: String!): Owner!
+}
+
+type Mutation {
+  createPet(create: CreateInput!): Pet!
+  createOwner(createOwnerInput: CreateOwnerInput!): Owner!
+  updateOwner(updateOwnerInput: UpdateOwnerInput!, id: String!): Owner!
+  removeOwner(id: String!): Owner!
+}
+
+input CreateInput {
+  name: String!
+  gender: String!
+  type: String
+}
+
+input CreateOwnerInput {
+  name: String!
+  gender: GenderEnum!
+}
+
+input UpdateOwnerInput {
+  name: String!
+  gender: GenderEnum
+}
